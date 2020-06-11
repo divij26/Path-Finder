@@ -12,7 +12,11 @@
     </div>
 
     <div class="options">
-        <button class="button visualise" onclick="visualise()">Visualise</button>
+        <input type="button" id="clearGrid" onclick = "clearGrid()" value="Clear Grid">
+        <input type="button" id="visualise" onclick="visualise()" value="Visualise">
+        <label for="check">Walls</label>
+        <input type="checkbox" id="check"  onclick="addWall()" value="Walls">
+        
     </div>
 
     <div class = "grid">

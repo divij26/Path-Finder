@@ -8,28 +8,35 @@
 }
 
 .options{
-    margin-top: 5px;
+    margin-top: 15px;
     height: 80px; 
+    margin: auto;
+    padding-top: 12px;
 }
 
-.visualise{
-    margin: 10px 45%;
+#visualise{
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+#check{
+        display: inline;
+}
+
+#clearGrid{
+    display: inline;
+    margin-left: 15%;
 }
 
 td{
-    background-color: whitesmoke;
+    background-color: thistle;
     height: 50px;
     width: 50px;
     border: 1px solid indigo;
-    transition: background-color 1s;
+    transition: background-color 1s 1s;
 }
 
-.selectedNode{
-    animation-name: coloring;
-    animation-duration: 1s;
-}
 
-@keyframes coloring{
-    from{background-color: white;}
-    to{background-color: yellow;}
+.finalPath{
+    background-color: "red";
 }
