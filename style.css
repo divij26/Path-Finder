@@ -1,6 +1,25 @@
-.nav{
+body{
+    margin: 0;
+}
+
+.navbarr{
     background-color: #0099cc;
-    height: 80px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#name{
+    margin-left: 5%;
+    margin-top: 40%;
+    margin-right: 70%;
+    height: 100%;
+}
+
+.dropdownButton{
+    height: 100%;
+    margin-bottom: 4px;
+    background-color: #0099cc;
 }
 
 .grid{
@@ -32,8 +51,8 @@ td{
     background-color: thistle;
     height: 50px;
     width: 50px;
-    border: 1px solid indigo;
-    transition: background-color 1s 1s;
+    border: 1px solid white;
+    transition: background-color 1s 0.5s;
 }
 
 
