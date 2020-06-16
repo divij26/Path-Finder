@@ -11,6 +11,16 @@ var timers = [];
 var timers2 = [];
 var weights = [];
 var valuesAssigned = false;
+var img = document.querySelectorAll(".weights"); //for both weights and walls
+var images = [];
+var mouseDown = false;
+var startNode;
+var endNode;
+var checkWall = true;
+var checkWeight = true;
+
+document.body.onmousedown = () => mouseDown = true;
+document.body.onmouseup = () => mouseDown = false;
 
 //Priority Queue
 class priorityQueue{
@@ -113,17 +123,21 @@ class Graph{
 function createNodes(){
     for(let i=0; i<grid_side_length; i++){
         weights[i] = []
+        images[i] = [];
         html_grid_matrix[i]=[];
         grid_matrix[i]=[];
         checkedNode[i]=[];
         
         for(let j=0; j<grid_side_length; j++){
             weights[i][j] = 1;
+            images[i][j] = img[(10*i)+j];
             html_grid_matrix[i][j] = grid[(10*i)+j];
             grid_matrix[i][j]=`${i}${j}`;
             checkedNode[i][j] = false;
         }
     }
+    startNode = grid_matrix[0][0];
+    endNode = grid_matrix[9][9];
     valuesAssigned = true;
 }
 
@@ -199,52 +213,38 @@ function finalSolution(startNode, endNode, backtrace){
 
 function addWall(){
     var checkbox = document.querySelector("#check");
-    if(checkbox.checked){
+    if(checkWall){
         for(let i=0; i<grid_side_length; i++){
             for(let j=0; j<grid_side_length; j++){
                 if(html_grid_matrix[i][j]){
-                    html_grid_matrix[i][j].addEventListener("click", function(){
-                        for(let p=0; p<grid_side_length; p++){
-                            for(let q=0; q<grid_side_length; q++){
-                                if(html_grid_matrix[p][q] == this){
-                                    html_grid_matrix[p][q].style.backgroundColor = "black";
-                                    html_grid_matrix[p][q] = null;
-                                }
-                            }
-                        }
+                    html_grid_matrix[i][j].addEventListener("mouseover", function(){
+                        
                     });
                 }
             }
         }
-        
+        checkWall = false;
     }
-    else if(checkbox.checked==false){
-        for(let i=0; i<grid_side_length; i++){
-            for(let j=0; j<grid_side_length; j++){
-                if(html_grid_matrix[i][j]){
-                    html_grid_matrix[i][j].addEventListener("click", function(){
-                        console.log("click");
-                    });
-                }
-            }
-        }
+    else{
+        checkWall = true;
     }   
 }
 
 //addWeights
 function addWeights(){
     let checkWeights = document.querySelector("#checkWeights");
-    console.log(checkWeights);
-    if(checkWeights.checked){
-        //console.log(html_grid_matrix[0][0]);
+    if(checkWeight){
         for(let i=0; i<grid_side_length; i++){
             for(let j=0; j<grid_side_length; j++){
-                html_grid_matrix[i][j].addEventListener("click", function(){
-                    console.log("Clicked  " + i + j);
-                    weights[i][j] = 5;
-                })    
+                if(html_grid_matrix[i][j] != null){
+                    html_grid_matrix[i][j].addEventListener("click", wallUI(i,j, this));
+                }    
             }
         }
+        checkWeight = false;
+    }
+    else{
+        checkWeight = true;
     }
 }
 
@@ -252,7 +252,6 @@ function reset(){
     time = 500; //to remove all the delayed animations in next visualization
     for(let p=0; p<grid_side_length*grid_side_length; p++){
         
-        //console.log(html_grid_matrix[p][q]);
         algoRunning = false;
         
         //remove animations
@@ -265,10 +264,15 @@ function reset(){
         grid[p].style.backgroundColor = "thistle";
 
         //remove walls
+        
         for(let i=0; i<grid_side_length; i++){
             for(let j=0; j<grid_side_length; j++){
                 html_grid_matrix[i][j] = undefined;
                 delete(html_grid_matrix[i][j]);
+                if(grid_matrix[i][j] != startNode && grid_matrix[i][j] != endNode){
+                    images[i][j].src = "";
+                    images[i][j].classList.remove("weightsNwalls");
+                }
             }
         }
         createNodes();
@@ -277,12 +281,10 @@ function reset(){
 
 function addNeighbours(map, weights){
     //adding neighbours
-    console.log(weights);
     for(let i=0; i<grid_side_length; i++){
         for(let j=0; j<grid_side_length; j++){
             if(html_grid_matrix[i][j]!=null){
                 if(i==0 && j==0){
-                    console.log(weights[i][j]);
                     map.addEdge(((grid_matrix[i][j])), addEdgePosition("bottom", i, j), weights[i][j]);
                     map.addEdge(((grid_matrix[i][j])), addEdgePosition("right", i, j), weights[i][j]);
                 } 
@@ -343,18 +345,9 @@ function visualise(){
             map.addNode((grid_matrix[i][j]));    
         }
     }
-
-    for(let i=0; i<grid_side_length; i++){
-        for(let j=0; j<grid_side_length; j++){
-            console.log(weights[i][j]);    
-        }
-    }
-
     addNeighbours(map, weights);
 
     if(!algoRunning){
-        var startNode = grid_matrix[0][0];
-        var endNode = grid_matrix[9][9];
         map.dijkstra(startNode, endNode);
         algoStyling(currentNodeHtml);
         finalSolution(startNode, endNode, backtrace);
@@ -365,5 +358,22 @@ function visualise(){
     
 }
 
-    //assign values to nodes
-    createNodes();
+//assign values to nodes
+createNodes();
+
+function wallUI(i, j, thiss){
+    if(mouseDown==true && grid_matrix[i][j] != startNode && grid_matrix[i][j] != endNode){
+        for(let p=0; p<grid_side_length; p++){
+            for(let q=0; q<grid_side_length; q++){
+                if(html_grid_matrix[p][q] == thiss){
+                    html_grid_matrix[p][q].classList.add("walls");
+                    html_grid_matrix[p][q] = null;    
+                }
+            }
+        }
+    }
+}
+
+function weightUI(){
+
+}

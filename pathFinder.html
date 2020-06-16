@@ -8,149 +8,158 @@
 <body>
     <div class="navbarr">
         <span id="name">Path Finder</span>
-        <div class="btn-group dropdownButton">
+        <span class="btn-group dropdownButton">
             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Action
+                Action
             </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Dijkstra</a>
-              <a class="dropdown-item" href="#"> A*</a>
-              <a class="dropdown-item" href="#">DFS</a>
-            </div>
-          </div>
+            <span class="dropdown-menu">
+                <a class="dropdown-item" href="#">Dijkstra</a>
+                <a class="dropdown-item" href="#"> A*</a>
+                <a class="dropdown-item" href="#">DFS</a>
+            </span>
+        </span>
+    </div>
+    <div class="navbarr2">
+        <span class="options add">
+        <input type="button" id="clearGrid" class="btn btn-warning" onclick = "reset()" value="Reset">
+        <input type="button" id="visualise" class="btn btn-success" onclick="visualise()" value="Visualise">
+        <span class="dropdown">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ADD Weights or Walls
+            </button>
+            <span class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#" onclick="addWall()">Walls</a>
+                <a class="dropdown-item" href="#" onclick="addWeights()">Weight</a>
+            </span>
+        </span>
+            
+        </span>
     </div>
 
-    <div class="options">
-        <input type="button" id="clearGrid" onclick = "reset()" value="Reset">
-        <input type="button" id="visualise" onclick="visualise()" value="Visualise">
-        <label for="check">Walls</label>
-        <input type="checkbox" id="check"  onclick="addWall()" value="Walls">
-        <input type="checkbox" id="checkWeights" onclick="addWeights()" value="Weight">
-        
-    </div>
+    
 
     <div class = "grid">
 
         <table>
             <tr>
-                <td id="00"><img src="start.png" alt="start" height="40px" width="40px" style="padding-left: 4px;"></td>
-                <td id="01"></td>
-                <td id="02"></td>
-                <td id="03"></td>
-                <td id="04"></td>
-                <td id="05"></td>
-                <td id="06"></td>
-                <td id="07"></td>
-                <td id="08"></td>
-                <td id="09"></td>
+                <td id="00"><img src="start.png" alt="start" class="startNendNodes"></td>
+                <td id="01"><img src=""  class="weights walls"></td>
+                <td id="02"><img src=""  class="weights walls"></td>
+                <td id="03"><img src=""  class="weights walls"></td>
+                <td id="04"><img src=""  class="weights walls"></td>
+                <td id="05"><img src=""  class="weights walls"></td>
+                <td id="06"><img src=""  class="weights walls"></td>
+                <td id="07"><img src=""  class="weights walls"></td>
+                <td id="08"><img src=""  class="weights walls"></td>
+                <td id="09"><img src=""  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="10"></td>
-                <td id="11"></td>
-                <td id="12"></td>
-                <td id="13"></td>
-                <td id="14"></td>
-                <td id="15"></td>
-                <td id="16"></td>
-                <td id="17"></td>
-                <td id="18"></td>
-                <td id="19"></td>
+                <td id="10"><img src=""  class="weights walls"></td>
+                <td id="11"><img src=""  class="weights walls"></td>
+                <td id="12"><img src=""  class="weights walls"></td>
+                <td id="13"><img src=""  class="weights walls"></td>
+                <td id="14"><img src=""  class="weights walls"></td>
+                <td id="15"><img src=""  class="weights walls"></td>
+                <td id="16"><img src=""  class="weights walls"></td>
+                <td id="17"><img src=""  class="weights walls"></td>
+                <td id="18"><img src=""  class="weights walls"></td>
+                <td id="19"><img src=""  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="20"></td>
-                <td id="21"></td>
-                <td id="22"></td>
-                <td id="23"></td>
-                <td id="24"></td>
-                <td id="25"></td>
-                <td id="26"></td>
-                <td id="27"></td>
-                <td id="28"></td>
-                <td id="29"></td>
+                <td id="20"><img src=""  class="weights walls"></td>
+                <td id="21"><img src=""  class="weights walls"></td>
+                <td id="22"><img src=""  class="weights walls"></td>
+                <td id="23"><img src=""  class="weights walls"></td>
+                <td id="24"><img src=""  class="weights walls"></td>
+                <td id="25"><img src=""  class="weights walls"></td>
+                <td id="26"><img src=""  class="weights walls"></td>
+                <td id="27"><img src=""  class="weights walls"></td>
+                <td id="28"><img src=""  class="weights walls"></td>
+                <td id="29"><img src=""  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="30"></td>
-                <td id="31"></td>
-                <td id="32"></td>
-                <td id="33"></td>
-                <td id="34"></td>
-                <td id="35"></td>
-                <td id="36"></td>
-                <td id="37"></td>
-                <td id="38"></td>
-                <td id="39"></td>
+                <td id="30"><img src=""  class="weights walls"></td>
+                <td id="31"><img src=""  class="weights walls"></td>
+                <td id="32"><img src=""  class="weights walls"></td>
+                <td id="33"><img src=""  class="weights walls"></td>
+                <td id="34"><img src=""  class="weights walls"></td>
+                <td id="35"><img src=""  class="weights walls"></td>
+                <td id="36"><img src=""  class="weights walls"></td>
+                <td id="37"><img src=""  class="weights walls"></td>
+                <td id="38"><img src=""  class="weights walls"></td>
+                <td id="39"><img src=""  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="40"></td>
-                <td id="41"></td>
-                <td id="42"></td>
-                <td id="43"></td>
-                <td id="44"></td>
-                <td id="45"></td>
-                <td id="46"></td>
-                <td id="47"></td>
-                <td id="48"></td>
-                <td id="49"></td>
+                <td id="40"><img src=""  class="weights walls"></td>
+                <td id="41"><img src=""  class="weights walls"></td>
+                <td id="42"><img src=""  class="weights walls"></td>
+                <td id="43"><img src=""  class="weights walls"></td>
+                <td id="44"><img src=""  class="weights walls"></td>
+                <td id="45"><img src=""  class="weights walls"></td>
+                <td id="46"><img src=""  class="weights walls"></td>
+                <td id="47"><img src=""  class="weights walls"></td>
+                <td id="48"><img src=""  class="weights walls"></td>
+                <td id="49"><img src=""  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="50"></td>
-                <td id="51"></td>
-                <td id="52"></td>
-                <td id="53"></td>
-                <td id="54"></td>
-                <td id="55"></td>
-                <td id="56"></td>
-                <td id="57"></td>
-                <td id="58"></td>
-                <td id="59"></td>
+                <td id="50"><img src=""  class="weights walls"></td>
+                <td id="51"><img src=""  class="weights walls"></td>
+                <td id="52"><img src=""  class="weights walls"></td>
+                <td id="53"><img src=""  class="weights walls"></td>
+                <td id="54"><img src=""  class="weights walls"></td>
+                <td id="55"><img src=""  class="weights walls"></td>
+                <td id="56"><img src=""  class="weights walls"></td>
+                <td id="57"><img src=""  class="weights walls"></td>
+                <td id="58"><img src=""  class="weights walls"></td>
+                <td id="59"><img src=""  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="60"></td>
-                <td id="61"></td>
-                <td id="62"></td>
-                <td id="63"></td>
-                <td id="64"></td>
-                <td id="65"></td>
-                <td id="66"></td>
-                <td id="67"></td>
-                <td id="68"></td>
-                <td id="69"></td>
+                <td id="60"><img src=""  class="weights walls"></td>
+                <td id="61"><img src=""  class="weights walls"></td>
+                <td id="62"><img src=""  class="weights walls"></td>
+                <td id="63"><img src=""  class="weights walls"></td>
+                <td id="64"><img src=""  class="weights walls"></td>
+                <td id="65"><img src=""  class="weights walls"></td>
+                <td id="66"><img src=""  class="weights walls"></td>
+                <td id="67"><img src=""  class="weights walls"></td>
+                <td id="68"><img src=""  class="weights walls"></td>
+                <td id="69"><img src=""  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="70"></td>
-                <td id="71"></td>
-                <td id="72"></td>
-                <td id="73"></td>
-                <td id="74"></td>
-                <td id="75"></td>
-                <td id="76"></td>
-                <td id="77"></td>
-                <td id="78"></td>
-                <td id="79"></td>
+                <td id="70"><img src=""  class="weights walls"></td>
+                <td id="71"><img src=""  class="weights walls"></td>
+                <td id="72"><img src=""  class="weights walls"></td>
+                <td id="73"><img src=""  class="weights walls"></td>
+                <td id="74"><img src=""  class="weights walls"></td>
+                <td id="75"><img src=""  class="weights walls"></td>
+                <td id="76"><img src=""  class="weights walls"></td>
+                <td id="77"><img src=""  class="weights walls"></td>
+                <td id="78"><img src=""  class="weights walls"></td>
+                <td id="79"><img src=""  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="80"></td>
-                <td id="81"></td>
-                <td id="82"></td>
-                <td id="83"></td>
-                <td id="84"></td>
-                <td id="85"></td>
-                <td id="86"></td>
-                <td id="87"></td>
-                <td id="88"></td>
-                <td id="89"></td>
+                <td id="80"><img src=""  class="weights walls"></td>
+                <td id="81"><img src=""  class="weights walls"></td>
+                <td id="82"><img src=""  class="weights walls"></td>
+                <td id="83"><img src=""  class="weights walls"></td>
+                <td id="84"><img src=""  class="weights walls"></td>
+                <td id="85"><img src=""  class="weights walls"></td>
+                <td id="86"><img src=""  class="weights walls"></td>
+                <td id="87"><img src=""  class="weights walls"></td>
+                <td id="88"><img src=""  class="weights walls"></td>
+                <td id="89"><img src=""  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="90"></td>
-                <td id="91"></td>
-                <td id="92"></td>
-                <td id="93"></td>
-                <td id="94"></td>
-                <td id="95"></td>
-                <td id="96"></td>
-                <td id="97"></td>
-                <td id="98"></td>
-                <td id="99"><img src="finish-flag.png" alt="end" height="40px" width="40px"></td>
+                <td id="90"><img src=""  class="weights walls"></td>
+                <td id="91"><img src=""  class="weights walls"></td>
+                <td id="92"><img src=""  class="weights walls"></td>
+                <td id="93"><img src=""  class="weights walls"></td>
+                <td id="94"><img src=""  class="weights walls"></td>
+                <td id="95"><img src=""  class="weights walls"></td>
+                <td id="96"><img src=""  class="weights walls"></td>
+                <td id="97"><img src=""  class="weights walls"></td>
+                <td id="98"><img src=""  class="weights walls"></td>
+                <td id="99"><img src="finish-flag.png" alt="end" class="startNendNodes"></td>
             </tr>
         </table>
     </div>

@@ -9,11 +9,17 @@ body{
     font-weight: bold;
 }
 
+.navbarr2{
+    margin: 20px 0px 40px 0px;
+}
+
 #name{
     margin-left: 5%;
     margin-top: 40%;
     margin-right: 70%;
     height: 100%;
+    text-overflow: initial;
+    color: white;
 }
 
 .dropdownButton{
@@ -52,10 +58,31 @@ td{
     height: 50px;
     width: 50px;
     border: 1px solid white;
-    transition: background-color 1s 0.5s;
+    transition: background-color 0.5s 0.5s;
 }
 
 
 .finalPath{
     background-color: "red";
+}
+
+.weightsNwalls{
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    user-select: none;
+}
+
+.walls{
+    background-color: black;
+    border-color: black;
+    transition: none;
+}
+
+.startNendNodes{
+    height: 40px;
+    width: 40px;
+    margin-left: 3px;
+    background-color: none;
 }
