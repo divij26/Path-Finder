@@ -24,7 +24,7 @@
         <input type="button" id="clearGrid" class="btn btn-warning" onclick = "reset()" value="Reset">
         <input type="button" id="visualise" class="btn btn-success" onclick="visualise()" value="Visualise">
         <span class="dropdown">
-            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary btn-sm dropdown-toggle ddbutton" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ADD Weights or Walls
             </button>
             <span class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -42,124 +42,324 @@
 
         <table>
             <tr>
-                <td id="00"><img src="start.png" alt="start" class="startNendNodes"></td>
-                <td id="01"><img src=""  class="weights walls"></td>
-                <td id="02"><img src=""  class="weights walls"></td>
-                <td id="03"><img src=""  class="weights walls"></td>
-                <td id="04"><img src=""  class="weights walls"></td>
-                <td id="05"><img src=""  class="weights walls"></td>
-                <td id="06"><img src=""  class="weights walls"></td>
-                <td id="07"><img src=""  class="weights walls"></td>
-                <td id="08"><img src=""  class="weights walls"></td>
-                <td id="09"><img src=""  class="weights walls"></td>
+                <td id="00"><img src="start.png" alt="start" draggable="false" class="startNendNodes weights"></td>
+                <td id="01"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="02"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="03"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="04"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="05"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="06"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="07"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="08"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="09"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="10"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="11"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="12"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="13"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="14"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="15"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="16"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="17"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="18"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="19"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="20"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="21"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="22"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="23"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="24"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="25"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="26"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="27"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="28"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="29"><img src = "" draggable="false"  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="10"><img src=""  class="weights walls"></td>
-                <td id="11"><img src=""  class="weights walls"></td>
-                <td id="12"><img src=""  class="weights walls"></td>
-                <td id="13"><img src=""  class="weights walls"></td>
-                <td id="14"><img src=""  class="weights walls"></td>
-                <td id="15"><img src=""  class="weights walls"></td>
-                <td id="16"><img src=""  class="weights walls"></td>
-                <td id="17"><img src=""  class="weights walls"></td>
-                <td id="18"><img src=""  class="weights walls"></td>
-                <td id="19"><img src=""  class="weights walls"></td>
+                <td id="30"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="31"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="32"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="33"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="34"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="35"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="36"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="37"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="38"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="39"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="40"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="41"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="42"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="43"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="44"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="45"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="46"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="47"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="48"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="49"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="50"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="51"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="52"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="53"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="54"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="55"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="56"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="57"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="58"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="59"><img src = "" draggable="false"  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="20"><img src=""  class="weights walls"></td>
-                <td id="21"><img src=""  class="weights walls"></td>
-                <td id="22"><img src=""  class="weights walls"></td>
-                <td id="23"><img src=""  class="weights walls"></td>
-                <td id="24"><img src=""  class="weights walls"></td>
-                <td id="25"><img src=""  class="weights walls"></td>
-                <td id="26"><img src=""  class="weights walls"></td>
-                <td id="27"><img src=""  class="weights walls"></td>
-                <td id="28"><img src=""  class="weights walls"></td>
-                <td id="29"><img src=""  class="weights walls"></td>
+                <td id="60"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="61"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="62"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="63"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="64"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="65"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="66"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="67"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="68"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="69"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="70"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="71"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="72"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="73"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="74"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="75"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="76"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="77"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="78"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="79"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="80"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="81"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="82"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="83"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="84"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="85"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="86"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="87"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="88"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="89"><img src = "" draggable="false"  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="30"><img src=""  class="weights walls"></td>
-                <td id="31"><img src=""  class="weights walls"></td>
-                <td id="32"><img src=""  class="weights walls"></td>
-                <td id="33"><img src=""  class="weights walls"></td>
-                <td id="34"><img src=""  class="weights walls"></td>
-                <td id="35"><img src=""  class="weights walls"></td>
-                <td id="36"><img src=""  class="weights walls"></td>
-                <td id="37"><img src=""  class="weights walls"></td>
-                <td id="38"><img src=""  class="weights walls"></td>
-                <td id="39"><img src=""  class="weights walls"></td>
+                <td id="90"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="91"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="92"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="93"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="94"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="95"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="96"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="97"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="98"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="99"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="100"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="101"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="102"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="103"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="104"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="105"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="106"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="107"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="108"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="109"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="110"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="111"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="112"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="113"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="114"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="115"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="116"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="117"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="118"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="119"><img src = "" draggable="false"  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="40"><img src=""  class="weights walls"></td>
-                <td id="41"><img src=""  class="weights walls"></td>
-                <td id="42"><img src=""  class="weights walls"></td>
-                <td id="43"><img src=""  class="weights walls"></td>
-                <td id="44"><img src=""  class="weights walls"></td>
-                <td id="45"><img src=""  class="weights walls"></td>
-                <td id="46"><img src=""  class="weights walls"></td>
-                <td id="47"><img src=""  class="weights walls"></td>
-                <td id="48"><img src=""  class="weights walls"></td>
-                <td id="49"><img src=""  class="weights walls"></td>
+                <td id="120"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="121"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="122"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="123"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="124"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="125"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="126"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="127"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="128"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="129"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="130"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="131"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="132"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="133"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="134"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="135"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="136"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="137"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="138"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="139"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="140"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="141"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="142"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="143"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="144"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="145"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="146"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="147"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="148"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="149"><img src = "" draggable="false"  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="50"><img src=""  class="weights walls"></td>
-                <td id="51"><img src=""  class="weights walls"></td>
-                <td id="52"><img src=""  class="weights walls"></td>
-                <td id="53"><img src=""  class="weights walls"></td>
-                <td id="54"><img src=""  class="weights walls"></td>
-                <td id="55"><img src=""  class="weights walls"></td>
-                <td id="56"><img src=""  class="weights walls"></td>
-                <td id="57"><img src=""  class="weights walls"></td>
-                <td id="58"><img src=""  class="weights walls"></td>
-                <td id="59"><img src=""  class="weights walls"></td>
+                <td id="150"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="151"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="152"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="153"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="154"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="155"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="156"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="157"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="158"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="159"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="160"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="161"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="162"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="163"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="164"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="165"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="166"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="167"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="168"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="169"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="170"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="171"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="172"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="173"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="174"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="175"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="176"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="177"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="178"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="179"><img src = "" draggable="false"  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="60"><img src=""  class="weights walls"></td>
-                <td id="61"><img src=""  class="weights walls"></td>
-                <td id="62"><img src=""  class="weights walls"></td>
-                <td id="63"><img src=""  class="weights walls"></td>
-                <td id="64"><img src=""  class="weights walls"></td>
-                <td id="65"><img src=""  class="weights walls"></td>
-                <td id="66"><img src=""  class="weights walls"></td>
-                <td id="67"><img src=""  class="weights walls"></td>
-                <td id="68"><img src=""  class="weights walls"></td>
-                <td id="69"><img src=""  class="weights walls"></td>
+                <td id="180"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="181"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="182"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="183"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="184"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="185"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="186"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="187"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="188"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="189"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="190"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="191"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="192"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="193"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="194"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="195"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="196"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="197"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="198"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="199"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="200"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="201"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="202"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="203"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="204"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="205"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="206"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="207"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="208"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="209"><img src = "" draggable="false"  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="70"><img src=""  class="weights walls"></td>
-                <td id="71"><img src=""  class="weights walls"></td>
-                <td id="72"><img src=""  class="weights walls"></td>
-                <td id="73"><img src=""  class="weights walls"></td>
-                <td id="74"><img src=""  class="weights walls"></td>
-                <td id="75"><img src=""  class="weights walls"></td>
-                <td id="76"><img src=""  class="weights walls"></td>
-                <td id="77"><img src=""  class="weights walls"></td>
-                <td id="78"><img src=""  class="weights walls"></td>
-                <td id="79"><img src=""  class="weights walls"></td>
+                <td id="210"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="211"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="212"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="213"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="214"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="215"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="216"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="217"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="218"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="219"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="220"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="221"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="222"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="223"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="224"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="225"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="226"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="227"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="228"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="229"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="230"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="231"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="232"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="233"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="234"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="235"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="236"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="237"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="238"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="239"><img src = "" draggable="false"  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="80"><img src=""  class="weights walls"></td>
-                <td id="81"><img src=""  class="weights walls"></td>
-                <td id="82"><img src=""  class="weights walls"></td>
-                <td id="83"><img src=""  class="weights walls"></td>
-                <td id="84"><img src=""  class="weights walls"></td>
-                <td id="85"><img src=""  class="weights walls"></td>
-                <td id="86"><img src=""  class="weights walls"></td>
-                <td id="87"><img src=""  class="weights walls"></td>
-                <td id="88"><img src=""  class="weights walls"></td>
-                <td id="89"><img src=""  class="weights walls"></td>
+                <td id="240"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="241"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="242"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="243"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="244"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="245"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="246"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="247"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="248"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="249"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="250"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="251"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="252"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="253"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="254"><img src="finish-flag.png" alt="end" draggable="false" class="startNendNodes weights"></td>
+                <td id="255"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="256"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="257"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="258"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="259"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="260"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="261"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="262"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="263"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="264"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="265"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="266"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="267"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="268"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="269"><img src = "" draggable="false"  class="weights walls"></td>
             </tr>
             <tr>
-                <td id="90"><img src=""  class="weights walls"></td>
-                <td id="91"><img src=""  class="weights walls"></td>
-                <td id="92"><img src=""  class="weights walls"></td>
-                <td id="93"><img src=""  class="weights walls"></td>
-                <td id="94"><img src=""  class="weights walls"></td>
-                <td id="95"><img src=""  class="weights walls"></td>
-                <td id="96"><img src=""  class="weights walls"></td>
-                <td id="97"><img src=""  class="weights walls"></td>
-                <td id="98"><img src=""  class="weights walls"></td>
-                <td id="99"><img src="finish-flag.png" alt="end" class="startNendNodes"></td>
+                <td id="270"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="271"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="272"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="273"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="274"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="275"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="276"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="277"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="278"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="279"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="280"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="281"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="282"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="283"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="284"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="285"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="286"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="287"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="288"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="289"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="290"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="291"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="292"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="293"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="294"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="295"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="296"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="297"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="298"><img src = "" draggable="false"  class="weights walls"></td>
+                <td id="299"><img src = "" draggable="false"  class="weights walls"></td>
             </tr>
         </table>
     </div>

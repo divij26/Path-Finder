@@ -1,5 +1,6 @@
 var grid = document.querySelectorAll("td");
-var grid_side_length = 10
+var grid_height = 10
+var grid_width = 30
 var grid_matrix = []; //collecting positions of nodes
 var html_grid_matrix = []; //reference to actual grid
 var checkedNode = []; // stops from checking node more than once
@@ -7,8 +8,6 @@ var algoRunning = false;
 var backtrace = {}; //final solution
 var time = 500; //for styling
 var currentNodeHtml = []; //for animating algorithm
-var timers = [];
-var timers2 = [];
 var weights = [];
 var valuesAssigned = false;
 var img = document.querySelectorAll(".weights"); //for both weights and walls
@@ -18,6 +17,7 @@ var startNode;
 var endNode;
 var checkWall = true;
 var checkWeight = true;
+var ddbutton = document.querySelector(".ddbutton"); //change text of add wall or weight dropsown button
 
 document.body.onmousedown = () => mouseDown = true;
 document.body.onmouseup = () => mouseDown = false;
@@ -98,6 +98,7 @@ class Graph{
         while(!pq.isEmpty()){
             let shortestStep = pq.dequeue();
             let currentNode = shortestStep[0];
+            //let number_of_neighbours = 0;
 
             currentNodeHtml.push(html_grid_matrix[Number(currentNode[0])][Number(currentNode[1])]);
 
@@ -109,35 +110,46 @@ class Graph{
                     times[neighbour.node] = time;
                     backtrace[neighbour.node] = currentNode;
                     
+                    //check if node is visited or not
                     if(checkedNode[Number(neighbour.node[0])][Number(neighbour.node[1])] == false){
                         pq.enqueue([neighbour.node, time]);
                     }
+
+                    //set node as visited/checked
                     checkedNode[Number(neighbour.node[0])][ Number(neighbour.node[1])] = true;
-                }
+                }  
             });
+
+            //final solution found - end loop
+            if(grid_matrix[Number(currentNode[0])][Number(currentNode[1])] == endNode){
+                console.log("Braking");
+                break;
+            }
         }
     }
 }
 
 //convert list to matrix
 function createNodes(){
-    for(let i=0; i<grid_side_length; i++){
+    let setter = 0;
+    for(let i=0; i<grid_height; i++){
         weights[i] = []
         images[i] = [];
         html_grid_matrix[i]=[];
         grid_matrix[i]=[];
         checkedNode[i]=[];
         
-        for(let j=0; j<grid_side_length; j++){
+        for(let j=0; j<grid_width; j++){
             weights[i][j] = 1;
-            images[i][j] = img[(10*i)+j];
-            html_grid_matrix[i][j] = grid[(10*i)+j];
+            images[i][j] = img[setter];
+            html_grid_matrix[i][j] = grid[setter];
             grid_matrix[i][j]=`${i}${j}`;
             checkedNode[i][j] = false;
+            setter++;
         }
     }
-    startNode = grid_matrix[0][0];
-    endNode = grid_matrix[9][9];
+    startNode = grid_matrix[5][10];
+    endNode = grid_matrix[5][25];
     valuesAssigned = true;
 }
 
@@ -182,13 +194,14 @@ function algoStyling(currentNodeHtml){
     let uniqueSet = new Set(currentNodeHtml);
     uniqueCurrentNodeHtml = [...uniqueSet]; 
     let listlength = uniqueCurrentNodeHtml.length;
+    let time2 = 0
     for(let i=0; i< listlength; i++){
         time += 100;
-        let timer2 = setTimeout(()=>{
-        uniqueCurrentNodeHtml[i].style.backgroundColor = "yellow";   
+        time2 += 50;
+        setTimeout(()=>{
+        uniqueCurrentNodeHtml[i].style.backgroundColor = "#c57f07";   
         algoRunning = "true";
         }, time);
-        timers2.push(timer2);
     }
 }
 
@@ -197,63 +210,63 @@ function finalSolution(startNode, endNode, backtrace){
     let path = [html_grid_matrix[9][9]];
         var lastStep = endNode;
         let time_final = time+50;
-        while(lastStep!==startNode){
+        while(lastStep!==startNode && lastStep != undefined){
             lastStep = backtrace[lastStep];
             let lastStepNode = html_grid_matrix[Number(lastStep[0])][Number(lastStep[1])];
             path.unshift(lastStepNode)   
         }
         for(let i=0; i<path.length; i++){
             time_final += 250;
-            let timer = setTimeout(()=>path[i].style.backgroundColor = "#ff9966", time_final);
-            timers.push(timer);
+            setTimeout(()=>path[i].style.backgroundColor = "#27b042", time_final);   
         }
         //setTimeout(()=>html_grid_matrix[9][9].style.backgroundColor = "#ff9966", time_final);
         algoRunning = false;
 }
 
 function addWall(){
-    var checkbox = document.querySelector("#check");
-    if(checkWall){
-        for(let i=0; i<grid_side_length; i++){
-            for(let j=0; j<grid_side_length; j++){
-                if(html_grid_matrix[i][j]){
-                    html_grid_matrix[i][j].addEventListener("mouseover", function(){
-                        
-                    });
-                }
+    ddbutton.textContent = "Wall";
+    for(let i=0; i<grid_height; i++){
+        for(let j=0; j<grid_width; j++){
+            if(html_grid_matrix[i][j]){
+                html_grid_matrix[i][j].removeEventListener("click", weightUI);
+                html_grid_matrix[i][j].addEventListener("mouseover", wallUI);
             }
         }
-        checkWall = false;
-    }
-    else{
-        checkWall = true;
     }   
 }
 
 //addWeights
 function addWeights(){
-    let checkWeights = document.querySelector("#checkWeights");
-    if(checkWeight){
-        for(let i=0; i<grid_side_length; i++){
-            for(let j=0; j<grid_side_length; j++){
-                if(html_grid_matrix[i][j] != null){
-                    html_grid_matrix[i][j].addEventListener("click", wallUI(i,j, this));
-                }    
+    ddbutton.textContent = "Weight";
+    for(let i=0; i<grid_height; i++){
+        for(let j=0; j<grid_width; j++){
+            if(html_grid_matrix[i][j] != null){
+                html_grid_matrix[i][j].removeEventListener("mouseover", wallUI);
+                html_grid_matrix[i][j].addEventListener("click", weightUI);
             }
         }
-        checkWeight = false;
-    }
-    else{
-        checkWeight = true;
     }
 }
 
 function reset(){
     time = 500; //to remove all the delayed animations in next visualization
-    for(let p=0; p<grid_side_length*grid_side_length; p++){
+
+    location.reload();
+
+    var links = document.getElementsByTagName("link");
+    for (let cl in links)
+    {
+        var link = links[cl];
+        if (link.rel === "stylesheet")
+            link.href += "";
+    }
+
+    /* for(let p=0; p<grid_side_length*grid_side_length; p++){
         
         algoRunning = false;
         
+        
+
         //remove animations
         for(let i=0; i<timers.length; i++){
             clearTimeout(timers.pop());
@@ -276,51 +289,50 @@ function reset(){
             }
         }
         createNodes();
-    }
+    } */
 }
 
 function addNeighbours(map, weights){
-    //adding neighbours
-    for(let i=0; i<grid_side_length; i++){
-        for(let j=0; j<grid_side_length; j++){
+    for(let i=0; i<grid_height; i++){
+        for(let j=0; j<grid_width; j++){
             if(html_grid_matrix[i][j]!=null){
                 if(i==0 && j==0){
                     map.addEdge(((grid_matrix[i][j])), addEdgePosition("bottom", i, j), weights[i][j]);
                     map.addEdge(((grid_matrix[i][j])), addEdgePosition("right", i, j), weights[i][j]);
                 } 
-                else if(i==grid_side_length-1 && j==0){
+                else if(i==grid_height-1 && j==0){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("top", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("right", i, j), weights[i][j]);
                 } 
-                else if(i==0 && j==grid_side_length-1){
+                else if(i==0 && j==grid_width-1){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("bottom", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("left", i, j), weights[i][j]);
                 } 
-                else if(i==9 && j==grid_side_length-1){
+                else if(i==9 && j==grid_width-1){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("top", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("left", i, j), weights[i][j]);
                 } 
-                else if(i==0 && j!=0 && j!=grid_side_length-1){
+                else if(i==0 && j!=0 && j!=grid_width-1){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("bottom", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("right", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("left", i, j), weights[i][j]);
                 } 
-                else if(i==9 && j!=0 && j!=grid_side_length-1){
+                else if(i==9 && j!=0 && j!=grid_width-1){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("top", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("right", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("left", i, j), weights[i][j]);
                 } 
-                else if(i!=grid_side_length-1 && i!=0 && j==0){
+                else if(i!=grid_height-1 && i!=0 && j==0){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("top", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("right", i, j), weights[i][j]);
-                    map.addEdge((grid_matrix[i][j]), addEdgePosition("bottom", i, j), weights[i][j]);
-                }
-                else if(i!=9 && i!=0 && j==grid_side_length-1){
-                    map.addEdge((grid_matrix[i][j]), addEdgePosition("top", i, j), weights[i][j]);
-                    map.addEdge((grid_matrix[i][j]), addEdgePosition("left", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("bottom", i, j), weights[i][j]);
                 }
-                else if(i!=0 && i!=grid_side_length-1 && j!=0 && j!=grid_side_length-1){
+                else if(i!=9 && i!=0 && j==grid_width-1){
+                    map.addEdge((grid_matrix[i][j]), addEdgePosition("top", i, j), weights[i][j]);
+                    map.addEdge((grid_matrix[i][j]), addEdgePosition("left", i, j), weights[i][j]);
+                    map.addEdge((grid_matrix[i][j]), addEdgePosition("bottom", i, j), weights[i][j]);
+                }
+                else if(i!=0 && i!=grid_height-1 && j!=0 && j!=grid_width-1){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("top", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("left", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("bottom", i, j), weights[i][j]);
@@ -340,8 +352,8 @@ function visualise(){
     var map = new Graph();
 
     //add Nodes in Grid
-    for(let i=0; i<grid_side_length; i++){
-        for(let j=0; j<grid_side_length; j++){
+    for(let i=0; i<grid_height; i++){
+        for(let j=0; j<grid_width; j++){
             map.addNode((grid_matrix[i][j]));    
         }
     }
@@ -361,13 +373,13 @@ function visualise(){
 //assign values to nodes
 createNodes();
 
-function wallUI(i, j, thiss){
-    if(mouseDown==true && grid_matrix[i][j] != startNode && grid_matrix[i][j] != endNode){
-        for(let p=0; p<grid_side_length; p++){
-            for(let q=0; q<grid_side_length; q++){
-                if(html_grid_matrix[p][q] == thiss){
+function wallUI(){
+    if(mouseDown==true && html_grid_matrix[5][10] != this && html_grid_matrix[5][25] != this){
+        for(let p=0; p<grid_height; p++){
+            for(let q=0; q<grid_width; q++){
+                if(html_grid_matrix[p][q] == this){
                     html_grid_matrix[p][q].classList.add("walls");
-                    html_grid_matrix[p][q] = null;    
+                    html_grid_matrix[p][q] = null;  
                 }
             }
         }
@@ -375,5 +387,16 @@ function wallUI(i, j, thiss){
 }
 
 function weightUI(){
-
+    //not works if node is startNode or endNode
+    if(html_grid_matrix[5][10] != this && html_grid_matrix[5][25] != this){
+        for(let p=0; p<grid_height; p++){
+            for(let q=0; q<grid_width; q++){
+                if(html_grid_matrix[p][q] == this){
+                    weights[p][q] = 5;
+                    images[p][q].src = "weight.png";
+                    images[p][q].classList.add("weightsNwalls");
+                }
+            }
+        }
+    } 
 }
