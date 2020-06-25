@@ -1,6 +1,6 @@
 var grid = document.querySelectorAll("td");
-var grid_height = 10
-var grid_width = 30
+var grid_height = 10;
+var grid_width = 30;
 var grid_matrix = []; //collecting positions of nodes
 var html_grid_matrix = []; //reference to actual grid
 var checkedNode = []; // stops from checking node more than once
@@ -99,6 +99,10 @@ class Graph{
             let shortestStep = pq.dequeue();
             let currentNode = shortestStep[0];
             //let number_of_neighbours = 0;
+            let x = Number(currentNode[0])
+            let y = Number(currentNode[1])
+
+            console.log(currentNode);
 
             currentNodeHtml.push(html_grid_matrix[Number(currentNode[0])][Number(currentNode[1])]);
 
@@ -143,13 +147,15 @@ function createNodes(){
             weights[i][j] = 1;
             images[i][j] = img[setter];
             html_grid_matrix[i][j] = grid[setter];
-            grid_matrix[i][j]=`${i}${j}`;
+            grid_matrix[i][j]=[`${i}`,`${j}`];
             checkedNode[i][j] = false;
             setter++;
         }
     }
-    startNode = grid_matrix[5][10];
-    endNode = grid_matrix[5][25];
+    startNode = grid_matrix[4][5];
+    endNode = grid_matrix[4][23];
+    start = html_grid_matrix[4][5];
+    end = html_grid_matrix[4][23];
     valuesAssigned = true;
 }
 
@@ -196,8 +202,8 @@ function algoStyling(currentNodeHtml){
     let listlength = uniqueCurrentNodeHtml.length;
     let time2 = 0
     for(let i=0; i< listlength; i++){
-        time += 100;
-        time2 += 50;
+        time += 50;
+        time2 += 10;
         setTimeout(()=>{
         uniqueCurrentNodeHtml[i].style.backgroundColor = "#c57f07";   
         algoRunning = "true";
@@ -207,20 +213,20 @@ function algoStyling(currentNodeHtml){
 
 function finalSolution(startNode, endNode, backtrace){
 
-    let path = [html_grid_matrix[9][9]];
-        var lastStep = endNode;
-        let time_final = time+50;
-        while(lastStep!==startNode && lastStep != undefined){
-            lastStep = backtrace[lastStep];
-            let lastStepNode = html_grid_matrix[Number(lastStep[0])][Number(lastStep[1])];
-            path.unshift(lastStepNode)   
-        }
-        for(let i=0; i<path.length; i++){
-            time_final += 250;
-            setTimeout(()=>path[i].style.backgroundColor = "#27b042", time_final);   
-        }
-        //setTimeout(()=>html_grid_matrix[9][9].style.backgroundColor = "#ff9966", time_final);
-        algoRunning = false;
+    let path = [end];
+    var lastStep = endNode;
+    let time_final = time+50;
+    while(lastStep!==startNode && lastStep != undefined){
+        lastStep = backtrace[lastStep];
+        let lastStepNode = html_grid_matrix[Number(lastStep[0])][Number(lastStep[1])];
+        path.unshift(lastStepNode)   
+    }
+    for(let i=0; i<path.length; i++){
+        time_final += 250;
+        setTimeout(()=>path[i].style.backgroundColor = "#27b042", time_final);   
+    }
+    //setTimeout(()=>html_grid_matrix[9][9].style.backgroundColor = "#ff9966", time_final);
+    algoRunning = false;
 }
 
 function addWall(){
@@ -261,35 +267,6 @@ function reset(){
             link.href += "";
     }
 
-    /* for(let p=0; p<grid_side_length*grid_side_length; p++){
-        
-        algoRunning = false;
-        
-        
-
-        //remove animations
-        for(let i=0; i<timers.length; i++){
-            clearTimeout(timers.pop());
-        }
-        for(let i=0; i<timers2.length; i++){
-            clearTimeout(timers2.pop());
-        }
-        grid[p].style.backgroundColor = "thistle";
-
-        //remove walls
-        
-        for(let i=0; i<grid_side_length; i++){
-            for(let j=0; j<grid_side_length; j++){
-                html_grid_matrix[i][j] = undefined;
-                delete(html_grid_matrix[i][j]);
-                if(grid_matrix[i][j] != startNode && grid_matrix[i][j] != endNode){
-                    images[i][j].src = "";
-                    images[i][j].classList.remove("weightsNwalls");
-                }
-            }
-        }
-        createNodes();
-    } */
 }
 
 function addNeighbours(map, weights){
@@ -308,7 +285,7 @@ function addNeighbours(map, weights){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("bottom", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("left", i, j), weights[i][j]);
                 } 
-                else if(i==9 && j==grid_width-1){
+                else if(i==grid_height-1 && j==grid_width-1){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("top", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("left", i, j), weights[i][j]);
                 } 
@@ -317,7 +294,7 @@ function addNeighbours(map, weights){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("right", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("left", i, j), weights[i][j]);
                 } 
-                else if(i==9 && j!=0 && j!=grid_width-1){
+                else if(i==grid_height-1 && j!=0 && j!=grid_width-1){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("top", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("right", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("left", i, j), weights[i][j]);
@@ -327,7 +304,7 @@ function addNeighbours(map, weights){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("right", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("bottom", i, j), weights[i][j]);
                 }
-                else if(i!=9 && i!=0 && j==grid_width-1){
+                else if(i!=grid_height-1 && i!=0 && j==grid_width-1){
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("top", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("left", i, j), weights[i][j]);
                     map.addEdge((grid_matrix[i][j]), addEdgePosition("bottom", i, j), weights[i][j]);
@@ -374,7 +351,7 @@ function visualise(){
 createNodes();
 
 function wallUI(){
-    if(mouseDown==true && html_grid_matrix[5][10] != this && html_grid_matrix[5][25] != this){
+    if(mouseDown==true && start != this && end != this){
         for(let p=0; p<grid_height; p++){
             for(let q=0; q<grid_width; q++){
                 if(html_grid_matrix[p][q] == this){
@@ -388,7 +365,7 @@ function wallUI(){
 
 function weightUI(){
     //not works if node is startNode or endNode
-    if(html_grid_matrix[5][10] != this && html_grid_matrix[5][25] != this){
+    if(start != this && end != this){
         for(let p=0; p<grid_height; p++){
             for(let q=0; q<grid_width; q++){
                 if(html_grid_matrix[p][q] == this){
