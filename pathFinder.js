@@ -222,10 +222,10 @@ function finalSolution(startNode, endNode, backtrace){
         path.unshift(lastStepNode)   
     }
     for(let i=0; i<path.length; i++){
-        time_final += 250;
-        setTimeout(()=>path[i].style.backgroundColor = "#27b042", time_final);   
+        time_final += 100;
+        setTimeout(()=>{path[i].style.backgroundColor = "#27b042";
+                        path[i].style.border = "none"}, time_final);   
     }
-    //setTimeout(()=>html_grid_matrix[9][9].style.backgroundColor = "#ff9966", time_final);
     algoRunning = false;
 }
 
